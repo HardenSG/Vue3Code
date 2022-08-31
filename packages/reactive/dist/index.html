@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./reactive.global.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script>
+        const {
+            effect,
+            reactive
+        } = VueReactive;
+        const obj = {
+            name: '闫德强',
+            age: 21
+        }
+        const res = reactive(obj);
+
+        effect(() => {
+            document.querySelector("#app").innerHTML = `姓名${res.name} 年龄${res.age}`
+        })
+
+        setTimeout(() => {
+            res.name = 'SG';
+            res.age++;
+        }, 2000);
+    </script>
+</body>
+
+</html>
